@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+ =================================================================================
+ MAPPING FILE for finding event handler class and method for a given event from client.
+ 
+  - if duplicate event_name present then first occurrence is retained
+  - use namespace attribute to avoid 'same event name' conflicts
+ 
+ [author: PMS]
+ ================================================================================= -->
+<events>
+<!-- System  -->
+	<event-handler class='com.qindi.mvc.handler.MainHandler'/>			
+	<event-handler class='com.qindi.mvc.handler.AdminHandler' namespace="qa" />
+    <event-handler class='com.qindi.mvc.handler.error.ErrorInEventHandler' />		   
+    <event-handler class='com.qindi.mvc.handler.error.UnknownEventHandler' />    
+<!-- User  -->
+	<event-handler class='com.test.calc.Basic' view='/views/test.jsp' namespace ="basic" />       	        	
+</events>

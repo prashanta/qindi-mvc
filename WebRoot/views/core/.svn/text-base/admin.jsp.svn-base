@@ -1,0 +1,36 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@page import="com.qindi.mvc.Reply"%>
+<%@page import="com.qindi.mvc.beans.response.ResponseJSON"%>
+<%@page import="org.json.JSONArray"%>
+<%@page import="org.json.JSONObject"%>
+<% 
+    String temp = "";
+    Reply r = (Reply)request.getAttribute("responseHandler");
+    ResponseJSON rx = (ResponseJSON)r.getRList().get(0);
+    JSONArray data = (JSONArray)rx.get("data");
+    for( int i=0 ; i<data.length(); i++)
+    {
+        JSONObject row = (JSONObject)data.get(i);
+        temp += "<tr style='font: normal normal 13px verdana,arial; background:"+ (i%2==0? "#eee" : "#ddd") +"'><td><b>" + row.getString("event") + "</b></td><td> " + row.getString("class") + " </td><td> " + row.getString("view") + "</td></tr>";     
+    }    
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@page import="org.json.JSONObject"%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>qindi MVC Event List</title>
+</head>
+<body style="background-color:#fff">
+<div style="left:60px; top:30px; position:absolute">
+    <span style="font: normal bold 34px verdana,arial; color:#000;letter-spacing:-5px;word-spacing:5px;">qindi MVC Event List</span><br><br>
+	<table cellpadding=5 cellspacing = 1>
+	<tr style="font: normal bold 20px verdana,arial;">
+	<td style="background:#cfcfcf">EVENT</td><td style="background: #cfcfcf">CLASS</td><td style="background:#cfcfcf">VIEW</td></tr>
+	<%=temp %>
+	<tr style="font: normal bold 13px verdana,arial; color:#000;"><td colspan = 3 style="background: #cfcfcf">Total: <%=data.length()%></td></tr>
+	</table>
+</div>
+</body>
+</html>

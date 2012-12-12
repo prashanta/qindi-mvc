@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+<!-- Title of application
+   - if omitted, default title will be "qindi" -->
+  <title>First qindi</title>  
+
+<!-- Event mapper file 
+   - mandatory. If omitted, critical error
+   - name: name of servlet  
+   - verbose - 0:none; 1:only errors; 2:everything
+   - breadcrumb - true/false 
+   - multiple entries accepted 
+   - path: Java src folder -->
+  <event-file name="go" verbose = "2" breadcrumb="true">qindi.events.xml</event-file>  
+<!-- log4j configuration file 
+   - if omitted uses default file as "log4jconfig.xml 
+   - path: same as this file web.xml -->  
+  <log4j-config-file>log4jconfig.xml</log4j-config-file>
+  
+<!-- Database connectivity testing function - tool for testing database connectivity  
+   - if omitted, controller uses default method to test class using attributes from <database> -->
+  <db-connectivity-tester> com.user.defined.class.Method </db-connectivity-tester>    
+  
+<!-- Database connection attributes 
+   - if omitted no database connectivity test is performed and assumed DbControl is not intended to be used
+   - mandatory if DbControl is intended to be used 
+   - multiple entries accepted  --> 
+  <database username="wewe" password="aaa" driver="ddd" location="" test="false"> Database Name </database>       
+
+</configuration>
+
